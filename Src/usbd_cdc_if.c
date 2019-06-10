@@ -292,7 +292,7 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
 	/* Assign USB message to queue */
-	UsbMessage msg;
+	Message msg;
 	msg.length = *Len;
 	msg.type = USB_MESSAGE;
 	memcpy(msg.data, Buf, msg.length);

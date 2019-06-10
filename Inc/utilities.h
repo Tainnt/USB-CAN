@@ -30,11 +30,11 @@
 #define DEFAULT_TIMEOUT 		 		0x0A
 #define DEFAULT_BAUDRATE				CAN_BAUDRATE_50
 
-typedef struct _UsbMessage {
+typedef struct _Message {
     uint8_t data[8];
 		uint8_t length;
 		bool type;
-} UsbMessage;
+} Message;
 
 uint8_t Crc8_Calc(uint8_t *bytes, uint32_t len);
 void Write_Flash(uint16_t msgId, uint16_t filterId, bool filterIdMode, uint8_t timeout, uint8_t buadrate);

@@ -98,7 +98,7 @@ static void MX_CAN_Init(void);
 static void MX_IWDG_Init(void);
 static void MX_USART1_UART_Init(void);
 
-bool validateCommand(UsbMessage msg);
+bool validateCommand(Message msg);
 /* USER CODE BEGIN PFP */
 #ifdef __GNUC__
  /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -126,7 +126,7 @@ PUTCHAR_PROTOTYPE
 void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef* hcan)
 {
 	/* Assign CAN message to queue */
-	UsbMessage msg;							
+	Message msg;							
 	msg.type = CAN_MESSAGE;
 	msg.length = hcan->pRxMsg->DLC;
 	memcpy(msg.data, hcan->pRxMsg->Data, msg.length);	
@@ -185,7 +185,7 @@ void CAN_Config(void)
   * @retval 
   */
 
-bool validateCommand(UsbMessage msg)
+bool validateCommand(Message msg)
 {
 	if(Crc8_Calc(msg.data,msg.length - 1) != msg.data[msg.length - 1])
 	{
@@ -303,7 +303,7 @@ bool validateCommand(UsbMessage msg)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	UsbMessage  msg;
+	Message  msg;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/

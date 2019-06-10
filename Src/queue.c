@@ -1,6 +1,6 @@
 #include "queue.h"
 
-int Queue_Pop(Queue *q, UsbMessage *msg) {
+int Queue_Pop(Queue *q, Message *msg) {
 
     uint16_t tail;
 
@@ -14,7 +14,7 @@ int Queue_Pop(Queue *q, UsbMessage *msg) {
     return 0;
 }
 
-void Queue_Push(Queue *q, UsbMessage *msg) {
+void Queue_Push(Queue *q, Message *msg) {
 
     uint16_t head;
 
