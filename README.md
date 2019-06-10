@@ -1,7 +1,7 @@
 # USB-CAN
-firmware USB-CAN converter for stm32f0
+Firmware USB-CAN converter for stm32f0
 
-This project built by KeilC <br/>
+This project was built by keilC <br/>
 
 CAN receive interrupt located in "main.c" file <br/>
 USB receive interrupt located in "usbd_cdc_if.c" file <br/>
