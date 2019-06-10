@@ -58,9 +58,9 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define CAN_BAUDRATE_BS1 				CAN_BS1_12TQ
-#define CAN_BAUDRATE_BS2 				CAN_BS2_5TQ
-#define RETRY_TIME		 					50
+#define CAN_BAUDRATE_BS1 				CAN_BS1_12TQ	// Using for set-up CAN baudrate
+#define CAN_BAUDRATE_BS2 				CAN_BS2_5TQ		// Using for set-up CAN baudrate
+#define RETRY_TIME		 					50						// Retry time if transmit not success
 
 /* USER CODE END PD */
 
@@ -81,13 +81,13 @@ CanTxMsgTypeDef TxMsg;
 CanRxMsgTypeDef RxMsg;							 
 CAN_FilterConfTypeDef sFilterConfig;		
 
-Queue queue;
-uint16_t msgId;
-bool filterIdMode;
-uint16_t filterId;
-uint8_t timeout;
-uint8_t baudrate;
-uint8_t version	= 25;
+Queue queue;																	// Queue for USB data and CAN data
+uint16_t msgId;																// CAN message ID
+bool filterIdMode;														// True: enable filter ID mode, false: disable filter ID mode
+uint16_t filterId;														// In filter ID mode, CAN only receive message ID equal filterId
+uint8_t timeout;															// Timeout for each CAN transmit data
+uint8_t baudrate;															// CAN baudrate
+uint8_t version	= 25;													// Version of code
 
 /* USER CODE END PV */
 
@@ -122,10 +122,11 @@ PUTCHAR_PROTOTYPE
  return ch;
 }
 
+/* CAN receive interrupt */
 void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef* hcan)
 {
 	/* Assign CAN message to queue */
-	UsbMessage msg;
+	UsbMessage msg;							
 	msg.type = CAN_MESSAGE;
 	msg.length = hcan->pRxMsg->DLC;
 	memcpy(msg.data, hcan->pRxMsg->Data, msg.length);	

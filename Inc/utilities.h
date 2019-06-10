@@ -22,8 +22,8 @@
 #define CAN_BAUDRATE_200  			0x0A				//10
 #define CAN_BAUDRATE_400  			0x05				//5
 
-#define ADDR_FLASH_PAGE_31    	((uint32_t)0x08007800) /* Base @ of Page 30, 1 Kbyte */
-#define DATA_START_ADDRESS 		 	ADDR_FLASH_PAGE_31	//Page 31
+#define ADDR_FLASH_PAGE_31    	((uint32_t)0x08007800) 	/* Base @ of Page 30, 1 Kbyte */
+#define DATA_START_ADDRESS 		 	ADDR_FLASH_PAGE_31			//Page 31
 #define FLASH_DATA_LENGTH				7
 
 #define DEFAULT_FILTER_ID_MODE 	false

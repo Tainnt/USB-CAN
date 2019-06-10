@@ -25,7 +25,6 @@ void Write_Flash(uint16_t msgId, uint16_t filterId, bool filterIdMode, uint8_t t
 	flashData[4] = filterIdMode;
 	flashData[5] = timeout;
 	flashData[6] = baudrate;
-//	Flash_ProgramPage(flashData,FLASH_DATA_LENGTH,DATA_START_ADDRESS);
 	Flash_Write_Char(flashData,FLASH_DATA_LENGTH,DATA_START_ADDRESS);
 }
 
